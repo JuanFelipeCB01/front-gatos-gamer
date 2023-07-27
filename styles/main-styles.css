@@ -1,0 +1,68 @@
+@font-face {
+  font-family: Monserrat;
+  src: url(./Montserrat-Black.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Monserrat;
+}
+
+.header-title {
+  font-size: 90px;
+}
+
+.main {
+  padding-top: 58px;
+  width: 95%;
+}
+.main-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.main-users-card:hover .main-users-card-inner {
+  transform: rotateY(180deg);
+}
+.main-users-card {
+  background-color: transparent;
+  width: 300px;
+  height: 417px;
+  border: 1px;
+  perspective: 1000px;
+}
+.main-users-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.main-users-card-inner-front, .main-users-card-inner-back {
+  position: absolute;
+  width: 100%;
+  height: 100%; /* Safari */
+  backface-visibility: hidden;
+}
+.main-users-card-inner-front {
+  background-color: #9b0d0d;
+  color: black;
+  border-radius: 10px;
+}
+.main-users-card-inner-front .card-thumb {
+  border-radius: 100%;
+  width: 120px;
+}
+.main-users-card-inner-back {
+  background-color: rgb(29, 247, 232);
+  color: rgb(0, 0, 0);
+  transform: rotateY(180deg);
+  list-style: none;
+  text-align: center;
+  border-radius: 10px;
+  width: 300px;
+  height: 417px;
+}/*# sourceMappingURL=main-styles.css.map */
