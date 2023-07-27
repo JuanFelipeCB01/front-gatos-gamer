@@ -10,8 +10,16 @@
   font-family: Monserrat;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .header-title {
   font-size: 90px;
+}
+.header-nav {
+  gap: 10px;
 }
 
 .main {

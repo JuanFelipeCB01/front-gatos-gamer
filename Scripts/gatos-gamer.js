@@ -1,45 +1,19 @@
 const userList$$ = document.querySelector(".main-users")
+const btnUsers$$ = document.querySelector(".users")
+const btnGames$$ = document.querySelector(".games")
+const btnPlatforms$$ = document.querySelector(".platforms")
 
 /* <img src=${user.image} alt="${user.name}" class='card-image'/> */
 
 const getUsers = async()=>{
     const response = await fetch(`http://localhost:5300/usuarios`);
     const res = await response.json();
-    
-    return res;
-}
-
-const getGames = async()=>{
-    const response = await fetch(`http://localhost:5300/videojuegos`);
-    const res = await response.json();
-
     console.log(res)
     return res;
 }
 
-const mapUsers = async(nonMapped)=>{
-    return nonMapped.map((user)=>({
-        name: user.nombre,
-        image: user.foto,
-        email: user.email,
-        favorite: user.favorito,
-        id: user.id
-    }))
-}
-
-const mapGames = async(nonMapped)=>{
-    return nonMapped.map((game)=>({
-        name: game.nombre,
-        image: game.foto,
-        releaseDate: game.año,
-        developer: game.desarrollador,
-        platforms: game.plataforma,
-        description: game.descripcion
-    }))
-}
-
-const drawUsers = (mappedUsers)=>{
-    for(user of mappedUsers){
+const drawUsers = (users)=>{
+    for (const user of users){
         const userContainer$$ = document.createElement("div")
         userContainer$$.setAttribute("class","main-users-card")
         userContainer$$.innerHTML =
@@ -59,20 +33,53 @@ const drawUsers = (mappedUsers)=>{
     }
 }
 
+const mapUsers = async(nonMapped)=>{
+    return nonMapped.map((user)=>({
+        name: user.nombre,
+        image: user.foto,
+        email: user.email,
+        favorite: user.favorito,
+        id: user.id
+    }))
+}
+
+const getGames = async()=>{
+    const response = await fetch(`http://localhost:5300/videojuegos`);
+    const res = await response.json();
+
+    console.log(res)
+    return res;
+}
+
+const mapGames = async(nonMapped)=>{
+    return nonMapped.   map((game)=>({
+        name: game.nombre,
+        image: game.foto,
+        releaseDate: game.año,
+        developer: game.desarrollador,
+        platforms: game.plataforma,
+        description: game.descripcion
+    }))
+}
+
 const init = async()=>{
 
-    const users = await getUsers()
+    const users = getUsers()
 
-    const mappeUsers = await mapUsers(users)
-
-    const games = await getGames()
-
-    const mappeGames = await mapGames(games)
+    const mappeUsers = mapUsers(users)
 
     drawUsers(mappeUsers)
 
     console.log(mappeUsers)
+
+    const games = getGames()
+
+    console.log(games)
+
+    const mappeGames = mapGames(games)
 }
 
 init()
+
+// btnUsers$$.addEventListener("click", ()=>drawUsers(mappeUsers))
 
