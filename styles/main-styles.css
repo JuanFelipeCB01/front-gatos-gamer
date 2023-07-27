@@ -16,10 +16,15 @@
   justify-content: space-around;
 }
 .header-title {
-  font-size: 90px;
+  font-size: 30px;
 }
 .header-nav {
   gap: 10px;
+  display: flex;
+  gap: 10px;
+}
+.header-nav-btn {
+  padding: 5px 10px;
 }
 
 .main {

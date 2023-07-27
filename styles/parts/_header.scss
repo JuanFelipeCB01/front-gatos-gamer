@@ -3,9 +3,15 @@
      align-items: center;
      justify-content: space-around;
     &-title{
-        font-size: 90px;
+        font-size: 30px;
     }
     &-nav{
         gap: 10px;
+        display: flex;
+        gap: 10px;
+
+        &-btn{
+            padding: 5px 10px;
+        }
     }
 }
