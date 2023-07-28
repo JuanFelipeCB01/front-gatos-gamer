@@ -1,6 +1,6 @@
 @font-face {
   font-family: Monserrat;
-  src: url(./Montserrat-Black.ttf);
+  src: url(./Montserrat-Medium.ttf);
 }
 * {
   margin: 0;
@@ -11,29 +11,37 @@
 }
 
 .header {
+  background-color: rgb(41, 41, 41);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px 300px;
 }
-.header-title {
-  font-size: 30px;
+.header-logo {
+  width: 80px;
 }
 .header-nav {
-  gap: 10px;
   display: flex;
   gap: 10px;
 }
 .header-nav-btn {
+  border: 1px;
+  border-radius: 20px;
   padding: 5px 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.header-nav-btn:hover {
+  size: 1.1;
 }
 
 .main {
-  padding-top: 58px;
-  width: 95%;
+  padding: 58px 300px;
 }
 .main-users {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 50px;
 }
 .main-users-card:hover .main-users-card-inner {
@@ -41,8 +49,8 @@
 }
 .main-users-card {
   background-color: transparent;
-  width: 300px;
-  height: 417px;
+  width: 400px;
+  height: 300px;
   border: 1px;
   perspective: 1000px;
 }
@@ -61,7 +69,11 @@
   backface-visibility: hidden;
 }
 .main-users-card-inner-front {
-  background-color: #9b0d0d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(207, 207, 172);
   color: black;
   border-radius: 10px;
 }
@@ -69,13 +81,49 @@
   border-radius: 100%;
   width: 120px;
 }
+.main-users-card-inner-front .card-title {
+  margin-top: 18px;
+  text-transform: capitalize;
+}
+.main-users-card-inner-front .card-subtitle {
+  margin-top: 10px;
+}
 .main-users-card-inner-back {
-  background-color: rgb(29, 247, 232);
+  background-color: rgb(207, 207, 172);
   color: rgb(0, 0, 0);
   transform: rotateY(180deg);
   list-style: none;
   text-align: center;
   border-radius: 10px;
-  width: 300px;
-  height: 417px;
+  width: 400px;
+  height: 300px;
+}
+.main-users-card-inner-back .card-game {
+  margin-top: 24px;
+}
+.main-users-card-inner-back .card-game-img {
+  margin-top: 12px;
+  width: 130px;
+  border-radius: 10px;
+}
+.main-games {
+  display: flex;
+  flex-direction: column;
+}
+.main-games-item {
+  border: 1px;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: rgb(207, 207, 172);
+  margin-bottom: 24px;
+}
+.main-games-item-developer {
+  text-transform: capitalize;
+}
+.main-games-item .platforms-btn {
+  border: 1px;
+  padding: 5px 10px;
+  color: rgb(27, 122, 255);
+  background-color: rgb(215, 213, 213);
+  border-radius: 15px;
 }/*# sourceMappingURL=main-styles.css.map */

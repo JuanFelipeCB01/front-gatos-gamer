@@ -1,17 +1,28 @@
 .header{
+    background-color: rgb(41, 41, 41);
      display: flex;
      align-items: center;
-     justify-content: space-around;
-    &-title{
-        font-size: 30px;
+     justify-content: space-between;
+     padding: 10px 300px;
+     
+    &-logo{
+        width: 80px;
     }
+
     &-nav{
-        gap: 10px;
         display: flex;
         gap: 10px;
 
         &-btn{
+            border: 1px;
+            border-radius: 20px;
             padding: 5px 10px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        &-btn:hover{
+            size: 1.1
         }
     }
 }

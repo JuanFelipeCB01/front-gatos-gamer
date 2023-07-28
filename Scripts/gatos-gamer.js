@@ -1,11 +1,10 @@
 let userList$$ = document.querySelector(".main-users")
 let gamesList$$ = document.querySelector(".main-games")
+let mainPage$$ = document.querySelector(".main-page")
 const btnUsers$$ = document.querySelector(".users")
 const btnGames$$ = document.querySelector(".games")
 const btnPlatforms$$ = document.querySelector(".platforms")
 /* <img src=${user.image} alt="${user.name}" class='card-image'/> */
-
-console.log(userList$$)
 
 const getUsers = async()=>{
     const response = await fetch(`http://localhost:5300/usuarios`);
@@ -19,7 +18,7 @@ const mapUsers = async(nonMapped)=>{
         name: user.nombre,
         image: user.foto,
         email: user.email,
-        favorite: user.favorito,
+        favorite: user.favorito[0],
         id: user.id
     }))
 }
@@ -37,7 +36,9 @@ const drawUsers = (users)=>{
                 <p class='card-subtitle'>Contacto: ${user.email}</p>
             </div>
             <div class="main-users-card-inner-back">
-                <p class="card-description"></p>
+                <h1 class="card-game">Videojuego favorito: </h1>
+                <p class="card-game-name">${user.favorite.nombre}</p>
+                <img class="card-game-img" src="${user.favorite.foto}"
             </div>
         </div>
         `
@@ -70,11 +71,11 @@ const drawGames = (games)=>{
         gameContainer$$.innerHTML =
         `
         <h2 class="main-games-item-name">${game.name}</h2>
-        <h3 class="main-games-item-developer">${game.developer}</h3>
-        <p class="main-games-items-description">${game.description}</p>
+        <h3 class="main-games-item-developer">Desarolladora: ${game.developer}</h3>
+        <p class="main-games-items-description">Descripción: ${game.description}</p>
         <div class="platforms">
-            <p>${game.platforms[0]}</p>
-            <p>${game.platforms[1]}</p>
+            <button class="platforms-btn">${game.platforms[0]}</button>
+            <button class="platforms-btn">${game.platforms[1]}</button>
         </div>
         `
         gamesList$$.appendChild(gameContainer$$);
@@ -82,16 +83,21 @@ const drawGames = (games)=>{
 }
 
 const showUsers = async()=>{
-    userList$$="flex"
+    userList$$.innerHTML=""
+    userList$$.style.display="flex"
     gamesList$$.style.display="none"
+    mainPage$$.style.display="none"
     const users = await getUsers()
     const mappeUsers = await mapUsers(users)
+    console.log(mappeUsers)
     drawUsers(mappeUsers)
 }
 
 const showGames = async()=>{
+    gamesList$$.innerHTML=""
     userList$$.style.display="none"
     gamesList$$.style.display="flex"
+    mainPage$$.style.display="none"
     const games = await getGames()
     const mappeGames = await mapGames(games)
     console.log(mappeGames)
